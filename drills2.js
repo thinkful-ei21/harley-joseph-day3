@@ -27,3 +27,15 @@ const hobbitsMeals = {
 };
 
 console.log(hobbitsMeals.meals[3]);
+
+const starTrek = [
+  {name:'Picard',jobTitle:'Captain'},
+  {name:'Riker',jobTitle:'Number One'},
+  {name:'LaForge',jobTitle:'Chief Engineer'}
+];
+
+for(let i in starTrek){
+  for (let officer in starTrek[i]){
+    console.log(`${officer}: ${starTrek[i][officer]}`);
+  }
+}
