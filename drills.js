@@ -209,11 +209,13 @@ var sampleObj = {
 })();
 
 function makeStudentsReport(data) {
-  let results = [];
-  for (let i = 0; i < data.length; i++){
-    results.push(`${data[i].name}: ${data[i].grade}`);
-  }
-  return results;
+  // let results = [];
+  // for (let i = 0; i < data.length; i++){
+  //   results.push(`${data[i].name}: ${data[i].grade}`);
+  // }
+  // return results;
+
+  return data.map(student => `${student.name}: ${student.grade}`);
 }
     
 /* From here down, you are not expected to 
@@ -265,4 +267,83 @@ function testIt() {
   console.log('SUCCESS: `makeStudentsReport` is working');
 }
     
+testIt();
+
+const studentData = [
+  {
+    name: 'Tim',
+    status: 'Current student',
+    course: 'Biology',
+  },
+  {
+    name: 'Sue',
+    status: 'Withdrawn',
+    course: 'Mathematics',
+  },
+  {
+    name: 'Liz',
+    status: 'On leave',
+    course: 'Computer science',
+  },
+];
+
+function enrollInSummerSchool(students) {
+  students.map(student => student.status = 'In Summer school');
+  return students;
+}
+
+/* From here down, you are not expected to understand.... for now :)
+  Nothing to see here!
+
+*/
+
+// tests
+
+function testIt() {
+  var testData = [
+    {
+      name: 'Burt',
+      status: 'Playing hooky',
+      course: 'Biology',
+    },
+    {
+      name: 'Melanie',
+      status: 'Sick',
+      course: 'Mathematics',
+    },
+    {
+      name: 'Leonard',
+      status: 'AWOL',
+      course: 'Computer science',
+    },
+  ];
+
+  var results = enrollInSummerSchool(testData);
+
+  if (!(results && results instanceof Array)) {
+    console.error('FAILURE: `enrollSummerSchool` must return an array');
+    return;
+  }
+  var result = testData.every(function(student) {
+    var match = results.find(function(_student) {
+      return (
+        _student.name === student.name &&
+        _student.course === student.course &&
+        _student.status.toLowerCase() === 'in summer school'
+      );
+    });
+    return match !== undefined;
+  });
+  if (!result) {
+    console.error(
+      'FAILURE: `enrollSummerSchool` should return ' +
+        'original key/value pairs for each student, and ' +
+        'update `status` to "In Summer school": ' +
+        JSON.stringify(results)
+    );
+  } else {
+    console.info('SUCCESS: `enrollSummerSchool` is working');
+  }
+}
+
 testIt();
