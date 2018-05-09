@@ -9,3 +9,15 @@ const loaf = {
 };
 
 console.log(loaf.hydration());
+
+const newObject = {
+  foo:'1',
+  bar:'2',
+  fum:'3',
+  quux:'4',
+  spam:'5'
+};
+
+for (let prop in newObject){
+  console.log(`${prop}:${newObject[prop]}`);
+}
