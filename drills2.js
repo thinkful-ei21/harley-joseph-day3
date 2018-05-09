@@ -50,3 +50,33 @@ function starTrekMessages(arr) {
   }
 }
 starTrekMessages(starTrek);
+
+function wordToLetter(word) {
+  let firstLetter = word.charAt(0);
+  let cipher = {
+    a:1,
+    b:2,
+    c:3,
+    d:4
+  };
+  if(cipher[firstLetter]){
+    return word.charAt(cipher[firstLetter])
+  } else {
+    return ' ';
+  }
+}
+
+function decode(text) {
+  let wordList = text.split(' ');
+  let solution = '';
+  for (let i = 0; i < wordList.length; i++) {
+    solution = solution + wordToLetter(wordList[i]);
+  }
+  return solution;
+}
+
+function decodeWords(stringOfWords){
+  return decode(stringOfWords);
+}
+
+console.log (decodeWords('craft block argon meter bells brown croon droop'));
