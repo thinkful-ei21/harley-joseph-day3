@@ -158,6 +158,56 @@ function personMaker() {
   console.log('SUCCESS: `updateObject` works correctly!');
 })();
 
+
+  
+function keyDeleter(obj) {
+  delete obj.foo;
+  delete obj.bar;
+  return obj;
+}
+
+var sampleObj = {
+  foo: 'foo',
+  bar: 'bar',
+  bizz: 'bizz',
+  bang: 'bang',
+};
+
+/* From here down, you are not expected to 
+   understand.... for now :)  
+   
+   
+   Nothing to see here!
+   
+*/
+
+(function testKeyDeleter() {
+  var obj = keyDeleter({
+    foo: 'foo',
+    bar: 'bar',
+    bizz: 'bizz',
+    bang: 'bang',
+  });
+
+  if (typeof obj !== 'object') {
+    console.error('ERROR: `keyDeleter` must be return an object');
+    return false;
+  }
+  ['foo', 'bar'].forEach(function(key) {
+    if (key in obj) {
+      console.error('`keyDeleter` did not delete the key for ' + key);
+      return false;
+    }
+  });
+  ['bizz', 'bang'].forEach(function(key) {
+    if (!(key in obj && obj[key] === key)) {
+      console.error('`keyDeleter` is deleting keys other than `foo` and `bar`');
+      return false;
+    }
+  });
+  console.log('SUCCESS: `keyDeleter` works correctly!');
+})();
+
 function makeStudentsReport(data) {
   let results = [];
   for (let i = 0; i < data.length; i++){
@@ -165,27 +215,27 @@ function makeStudentsReport(data) {
   }
   return results;
 }
-  
+    
 /* From here down, you are not expected to 
-     understand.... for now :)  
-     
-     Nothing to see here!
-     
-  */
-  
+       understand.... for now :)  
+       
+       Nothing to see here!
+       
+    */
+    
 // tests
-  
+    
 function testIt() {
   const testData = [
     { name: 'Jane Doe', grade: 'A' },
     { name: 'John Dough', grade: 'B' },
     { name: 'Jill Do', grade: 'A' },
   ];
-  
+    
   const expectations = ['Jane Doe: A', 'John Dough: B', 'Jill Do: A'];
-  
+    
   const results = makeStudentsReport(testData);
-  
+    
   if (!(results && results instanceof Array)) {
     console.error('FAILURE: `makeStudentsReport` must return an array');
     return;
@@ -193,9 +243,9 @@ function testIt() {
   if (results.length !== testData.length) {
     console.error(
       'FAILURE: test data had length of ' +
-          testData.length +
-          ' but `makeStudentsReport` returned array of length ' +
-          results.length
+            testData.length +
+            ' but `makeStudentsReport` returned array of length ' +
+            results.length
     );
     return;
   }
@@ -214,6 +264,5 @@ function testIt() {
   }
   console.log('SUCCESS: `makeStudentsReport` is working');
 }
-  
+    
 testIt();
-  
