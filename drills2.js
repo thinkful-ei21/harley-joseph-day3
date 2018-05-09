@@ -21,3 +21,9 @@ const newObject = {
 for (let prop in newObject){
   console.log(`${prop}:${newObject[prop]}`);
 }
+
+const hobbitsMeals = {
+  meals : ['breakfast', 'second breakfast', 'elevenses', 'lunch', 'afternoon tea', 'dinner', 'supper']
+};
+
+console.log(hobbitsMeals.meals[3]);
